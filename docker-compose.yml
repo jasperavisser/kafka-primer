@@ -1,0 +1,15 @@
+kafkaBroker:
+  image: wurstmeister/kafka:0.9.0.0
+  ports:
+  - 9092:9092
+  env_file:
+  - kafka.environment
+  links:
+  - zookeeper:zk
+  volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+
+zookeeper:
+  image: wurstmeister/zookeeper
+  ports:
+  - 2181:2181

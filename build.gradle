@@ -1,0 +1,27 @@
+group 'nl.haploid'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "ch.qos.logback:logback-classic:1.1.3"
+    compile "org.apache.kafka:kafka-clients:0.9.0.0"
+    compile "org.scala-lang:scala-library:2.11.7"
+    compile "org.scala-lang:scala-compiler:2.11.7"
+    testCompile "org.scalatest:scalatest_2.11:2.2.4"
+}
+
+task consumer(type: JavaExec) {
+    main = "nl.haploid.SampleConsumer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task producer(type: JavaExec) {
+    main = "nl.haploid.SampleProducer"
+    classpath = sourceSets.main.runtimeClasspath
+}
